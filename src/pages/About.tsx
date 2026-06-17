@@ -1,4 +1,4 @@
-﻿import { PageHero } from "@/components/sections/PageHero";
+import { PageHero } from "@/components/sections/PageHero";
 import { CTAFooter } from "@/components/sections/CTAFooter";
 import { Reveal } from "@/components/site/Reveal";
 import { SEO } from "@/components/site/SEO";
@@ -245,8 +245,7 @@ const About = () => (
     </section>
 
     <CTAFooter />
-  </>
+  </main>
 );
 
 export default About;
-

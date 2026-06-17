@@ -71,7 +71,7 @@ const Blog = () => (
     </section>
 
     <CTAFooter />
-  </>
+  </main>
 );
 
 export default Blog;

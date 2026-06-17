@@ -1,4 +1,4 @@
-﻿import { CTAFooter } from "@/components/sections/CTAFooter";
+import { CTAFooter } from "@/components/sections/CTAFooter";
 import { Reveal } from "@/components/site/Reveal";
 import { SEO } from "@/components/site/SEO";
 import productCamera from "@/assets/product-camera.jpg";
@@ -248,8 +248,7 @@ const Products = () => (
     </section>
 
     <CTAFooter />
-  </>
+  </main>
 );
 
 export default Products;
-

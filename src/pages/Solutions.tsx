@@ -182,7 +182,7 @@ const Solutions = () => (
     </section>
 
     <CTAFooter />
-  </>
+  </main>
 );
 
 export default Solutions;
