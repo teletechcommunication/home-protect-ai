@@ -113,7 +113,7 @@ const Products = () => (
           <span className="eyebrow">— Hardware Collection</span>
         </Reveal>
         <Reveal delay={100}>
-          <h1 className="font-serif-display text-6xl md:text-8xl mt-4 leading-[0.90] max-w-4xl">
+          <h1 className="font-serif-display text-7xl md:text-8xl mt-4 leading-[0.90] max-w-4xl">
             Hardware, <em>obsessively</em> made.
           </h1>
         </Reveal>

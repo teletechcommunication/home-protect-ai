@@ -17,7 +17,7 @@ export const PageHero = ({ eyebrow, title, description, index }: Props) => (
         {index && <Reveal delay={150}><span className="font-mono-label text-xs text-muted-foreground">{index}</span></Reveal>}
       </div>
       <Reveal delay={100}>
-        <h1 className="font-serif-display text-[14vw] md:text-[7.5rem] leading-[0.92] tracking-tight max-w-[16ch]">
+        <h1 className="font-serif-display text-[18vw] md:text-[7.5rem] leading-[0.92] tracking-tight max-w-[16ch]">
           {title}
         </h1>
       </Reveal>

@@ -69,13 +69,13 @@ const Index = () => {
             </Reveal>
             <Reveal delay={80}>
               <h1 style={{ fontFamily: "Bebas Neue, cursive", letterSpacing: "0.01em" }}
-                  className="leading-[0.85] text-[clamp(2.8rem,11vw,13rem)] uppercase text-foreground">
+                  className="leading-[0.85] text-[clamp(4.5rem,15vw,13rem)] uppercase text-foreground">
                 Always
               </h1>
             </Reveal>
             <Reveal delay={130}>
               <p style={{ fontFamily: "Bebas Neue, cursive", letterSpacing: "0.01em" }}
-                 className="leading-[0.85] text-[clamp(2.8rem,11vw,13rem)] uppercase -mt-2">
+                 className="leading-[0.85] text-[clamp(4.5rem,15vw,13rem)] uppercase -mt-2">
                 <span className="text-accent">Guard</span> Home
               </p>
             </Reveal>
