@@ -1,6 +1,7 @@
 ﻿import { PageHero } from "@/components/sections/PageHero";
 import { CTAFooter } from "@/components/sections/CTAFooter";
 import { Reveal } from "@/components/site/Reveal";
+import { SEO } from "@/components/site/SEO";
 import installerImg from "@/assets/installer.jpg";
 import monitoringCenter from "@/assets/monitoring-center.jpg";
 import team1 from "@/assets/team-1.jpg";
@@ -12,7 +13,11 @@ import installTeam from "@/assets/install-team.jpg";
 import { MapPin, Users, Heart, Leaf } from "lucide-react";
 
 const About = () => (
-  <>
+  <main>
+    <SEO 
+      title="Our Story | Home Protect AI"
+      description="Learn about Home Protect AI, our commitment to secure, beautifully designed home protection, and our founder's journey since 2014."
+    />
     <PageHero eyebrow="— Index 05" index="our story" title={<>Twelve years <em>obsessed</em> with one thing.</>} description="We started Home Protect AI because home security felt 20 years behind every other product in our lives. We rebuilt it — hardware, software, monitoring, and service — from first principles." />
 
     <section className="py-24">

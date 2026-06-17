@@ -1,6 +1,7 @@
 ﻿import { PageHero } from "@/components/sections/PageHero";
 import { CTAFooter } from "@/components/sections/CTAFooter";
 import { Reveal } from "@/components/site/Reveal";
+import { SEO } from "@/components/site/SEO";
 import { Link } from "react-router-dom";
 import { Home, Building2, Briefcase, Activity, Camera, Bell, Fingerprint, ArrowUpRight, Flame, Droplet, Siren, ShieldCheck, Wifi, Eye, Map, ClipboardCheck, Wrench, HeartPulse } from "lucide-react";
 import apartmentImg from "@/assets/apartment.jpg";
@@ -24,11 +25,15 @@ const solutions = [
 ];
 
 const Solutions = () => (
-  <>
+  <main>
+    <SEO 
+      title="Security Solutions | Home Protect AI"
+      description="Explore our range of intelligent home security solutions, from single-family home systems to renter-friendly apartment options and small business protection."
+    />
     <PageHero eyebrow="— Index 02" index="07 solutions" title={<>Built for every kind of <em>home</em>.</>} description="From a one-bedroom apartment to a multi-acre estate — Home Protect AI designs the right protection for the way you live, not a one-size-fits-all kit." />
 
     {/* Coverage capabilities strip */}
-    <section className="py-20 bg-canvas-2/40 border-y border-hairline">
+    <section className="py-20 bg-canvas-2/40 border-y border-hairline" aria-label="Security Capabilities">
       <div className="container-wide">
         <div className="grid lg:grid-cols-12 gap-10">
           <div className="lg:col-span-4">
@@ -57,7 +62,7 @@ const Solutions = () => (
       </div>
     </section>
 
-    <section className="py-20">
+    <section className="py-20" aria-label="Individual Security Solutions">
       <div className="container-wide space-y-32">
         {solutions.map((s, i) => (
           <Reveal key={s.title}>
@@ -69,7 +74,7 @@ const Solutions = () => (
               </div>
               <div className="lg:col-span-6 lg:px-8">
                 <div className="flex items-center gap-4 mb-6">
-                  <div className="w-11 h-11 rounded-xl bg-foreground text-background flex items-center justify-center"><s.icon className="w-5 h-5" /></div>
+                  <div className="w-11 h-11 rounded-xl bg-foreground text-background flex items-center justify-center"><s.icon className="w-5 h-5" aria-hidden="true" /></div>
                   <span className="font-mono-label text-xs text-muted-foreground">{s.n} / SOLUTION</span>
                 </div>
                 <h2 className="font-serif-display text-5xl md:text-6xl leading-[0.95] mb-6">{s.title}</h2>
@@ -77,11 +82,11 @@ const Solutions = () => (
                 <ul className="grid sm:grid-cols-2 gap-3 mb-8">
                   {s.points.map((p) => (
                     <li key={p} className="flex gap-3 text-sm">
-                      <span className="w-1 h-1 rounded-full bg-accent mt-2.5" />{p}
+                      <span className="w-1 h-1 rounded-full bg-accent mt-2.5" aria-hidden="true" />{p}
                     </li>
                   ))}
                 </ul>
-                <Link to="/contact" className="btn-ghost">Discuss this solution <ArrowUpRight className="w-4 h-4" /></Link>
+                <Link to="/contact" className="btn-ghost" aria-label={`Discuss ${s.title} solution with a specialist`}>Discuss this solution <ArrowUpRight className="w-4 h-4" aria-hidden="true" /></Link>
               </div>
             </div>
           </Reveal>

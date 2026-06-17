@@ -1,6 +1,7 @@
 ﻿import { useState } from "react";
 import { PageHero } from "@/components/sections/PageHero";
 import { Reveal } from "@/components/site/Reveal";
+import { SEO } from "@/components/site/SEO";
 import { Phone, Mail, MapPin, Clock, ShieldAlert } from "lucide-react";
 import { toast } from "@/hooks/use-toast";
 
@@ -12,10 +13,14 @@ const Contact = () => {
     toast({ title: "Quote request received", description: "A specialist will contact you within 1 business hour." });
   };
   return (
-    <>
+    <main>
+      <SEO 
+        title="Contact Us | Home Protect AI"
+        description="Get a free custom quote for your Home Protect AI security system. Contact us by phone, email, or visit our New York showroom."
+      />
       <PageHero eyebrow="— Index 06" index="get protected" title={<>Let's design your <em>system.</em></>} description="Tell us a little about your home. A Home Protect AI specialist will respond within one business hour with a custom plan and transparent quote." />
 
-      <section className="py-12 pb-32">
+      <section className="py-12 pb-32" aria-label="Quote Request Form">
         <div className="container-wide grid lg:grid-cols-12 gap-10">
           <div className="lg:col-span-7">
             <Reveal>
@@ -44,7 +49,7 @@ const Contact = () => {
                     <textarea rows={4} name="message" className="w-full bg-transparent border-b border-border py-3 focus:outline-none focus:border-foreground resize-none" placeholder="Concerns, sq footage, existing equipment..." />
                   </label>
                 </div>
-                <button type="submit" className="btn-primary mt-10">{sent ? "Request received" : "Request my free quote"}</button>
+                <button type="submit" className="btn-primary mt-10" aria-label="Submit quote request">{sent ? "Request received" : "Request my free quote"}</button>
                 <p className="mt-4 text-xs text-muted-foreground">No obligation. We never share your information.</p>
               </form>
             </Reveal>
@@ -107,7 +112,7 @@ const Contact = () => {
           </Reveal>
         </div>
       </section>
-    </>
+    </main>
   );
 };
 

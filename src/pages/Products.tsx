@@ -1,5 +1,6 @@
 ﻿import { CTAFooter } from "@/components/sections/CTAFooter";
 import { Reveal } from "@/components/site/Reveal";
+import { SEO } from "@/components/site/SEO";
 import productCamera from "@/assets/product-camera.jpg";
 import productDoorbell from "@/assets/product-doorbell.jpg";
 import productLock from "@/assets/product-lock.jpg";
@@ -105,9 +106,13 @@ const products = [
 ];
 
 const Products = () => (
-  <>
+  <main>
+    <SEO 
+      title="Hardware Collection | Home Protect AI"
+      description="Explore the Home Protect AI hardware collection, featuring 4K HDR cameras, smart locks, and AI-powered motion sensors designed to protect your home."
+    />
     {/* Hero */}
-    <section className="pt-32 pb-20 border-b border-hairline">
+    <section className="pt-32 pb-20 border-b border-hairline" aria-label="Hardware Overview">
       <div className="container-wide">
         <Reveal>
           <span className="eyebrow">— Hardware Collection</span>
@@ -124,11 +129,11 @@ const Products = () => (
         </Reveal>
         <Reveal delay={300}>
           <div className="mt-10 flex flex-wrap gap-3">
-            <a href={`tel:${PHONE}`} className="btn-primary">
-              Talk to a specialist <ArrowUpRight className="w-4 h-4" />
+            <a href={`tel:${PHONE}`} className="btn-primary" aria-label="Talk to a specialist about products">
+              Talk to a specialist <ArrowUpRight className="w-4 h-4" aria-hidden="true" />
             </a>
-            <a href={`tel:${PHONE}`} className="btn-ghost inline-flex items-center gap-2">
-              <PhoneCall className="w-4 h-4" /> {PHONE_DISPLAY}
+            <a href={`tel:${PHONE}`} className="btn-ghost inline-flex items-center gap-2" aria-label={`Call us at ${PHONE_DISPLAY}`}>
+              <PhoneCall className="w-4 h-4" aria-hidden="true" /> {PHONE_DISPLAY}
             </a>
           </div>
         </Reveal>

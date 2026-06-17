@@ -1,5 +1,6 @@
 ﻿import { PageHero } from "@/components/sections/PageHero";
 import { Reveal } from "@/components/site/Reveal";
+import { SEO } from "@/components/site/SEO";
 
 const sections = [
   { t: "Information we collect", b: "We collect only the information necessary to deliver and improve our security service: account details (name, email, phone, address), device telemetry (system status, sensor events), and customer support communications. Camera video is stored encrypted and accessed only by you, your authorized users, or, with your permission, our monitoring operators verifying an alarm." },
@@ -15,9 +16,13 @@ const sections = [
 ];
 
 const Privacy = () => (
-  <>
+  <main>
+    <SEO 
+      title="Privacy Policy | Home Protect AI"
+      description="Read our privacy policy to understand how Home Protect AI collects, uses, and protects your personal information and video data."
+    />
     <PageHero eyebrow="— Legal" index="privacy" title={<>Privacy <em>by design.</em></>} description="Last updated: April 1, 2026. We wrote this policy in plain English so you actually know what we do with your information." />
-    <section className="py-12 pb-32">
+    <section className="py-12 pb-32" aria-label="Privacy Policy Details">
       <div className="container-wide max-w-4xl">
         {sections.map((s, i) => (
           <Reveal key={s.t} delay={i * 50}>
@@ -30,7 +35,7 @@ const Privacy = () => (
         ))}
       </div>
     </section>
-  </>
+  </main>
 );
 export default Privacy;
 

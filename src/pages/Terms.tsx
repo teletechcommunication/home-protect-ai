@@ -1,5 +1,6 @@
 ﻿import { PageHero } from "@/components/sections/PageHero";
 import { Reveal } from "@/components/site/Reveal";
+import { SEO } from "@/components/site/SEO";
 
 const sections = [
   { t: "Acceptance of terms", b: "By creating a Home Protect AI account or using our service, you agree to these Terms of Service. If you do not agree, please do not use the service. We may update these terms with at least 30 days' notice for material changes." },
@@ -17,9 +18,13 @@ const sections = [
 ];
 
 const Terms = () => (
-  <>
+  <main>
+    <SEO 
+      title="Terms of Service | Home Protect AI"
+      description="Review our terms of service, covering eligibility, subscription, billing, equipment ownership, and our monitoring service agreement."
+    />
     <PageHero eyebrow="— Legal" index="terms" title={<>Terms & <em>conditions.</em></>} description="Last updated: April 1, 2026. The agreement that governs your use of Home Protect AI, written to be readable." />
-    <section className="py-12 pb-32">
+    <section className="py-12 pb-32" aria-label="Terms of Service Details">
       <div className="container-wide max-w-4xl">
         {sections.map((s, i) => (
           <Reveal key={s.t} delay={i * 40}>
@@ -32,7 +37,7 @@ const Terms = () => (
         ))}
       </div>
     </section>
-  </>
+  </main>
 );
 export default Terms;
 

@@ -1,6 +1,7 @@
-﻿import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { Reveal } from "@/components/site/Reveal";
 import { CTAFooter } from "@/components/sections/CTAFooter";
+import { SEO } from "@/components/site/SEO";
 import heroHome from "@/assets/hero-home.jpg";
 import lifestyleFamily from "@/assets/lifestyle-family.jpg";
 import monitoringCenter from "@/assets/monitoring-center.jpg";
@@ -22,10 +23,28 @@ const PHONE = "8559438332";
 const PHONE_DISPLAY = "855-943-8332";
 
 const Index = () => {
+  const schema = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Home Protect AI",
+    "url": "https://homeprotectai.com",
+    "logo": "https://homeprotectai.com/logo.png",
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "telephone": "+1-855-943-8332",
+      "contactType": "customer service"
+    }
+  };
+
   return (
-    <>
+    <main>
+      <SEO 
+        title="Home Protect AI | Professional Home Security & Monitoring"
+        description="Intelligent cameras, professional monitoring, and elegant smart devices. Secure your home with Home Protect AI."
+        schema={schema}
+      />
       {/* HERO — product showcase ====================== */}
-      <section className="relative min-h-[100svh] pt-20 pb-20 sm:pb-10 overflow-x-hidden bg-background">
+      <section className="relative min-h-[100svh] pt-20 pb-20 sm:pb-10 overflow-x-hidden bg-background" aria-label="Hero Section">
         {/* Radial glow behind product */}
         <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
           <div className="w-[700px] h-[700px] rounded-full bg-accent/8 blur-[120px]" />
@@ -92,7 +111,7 @@ const Index = () => {
               {/* Mini product thumb */}
               <div>
                 <div className="w-20 h-20 rounded-2xl overflow-hidden bg-canvas-2 border border-hairline mb-4">
-                  <img src={productCamera} alt="Aura Cam Pro" className="w-full h-full object-cover" />
+                  <img src={productCamera} alt="Aura Cam Pro" className="w-full h-full object-cover" loading="lazy" />
                 </div>
                 <p className="font-mono-label text-[9px] uppercase text-muted-foreground">Smart Security</p>
                 <p className="text-sm font-semibold mt-0.5 text-accent leading-tight">Precision Vision</p>
@@ -108,7 +127,7 @@ const Index = () => {
                   { icon: Star,        label: "Rating",   value: "4.9 / 5.0" },
                 ].map((s) => (
                   <div key={s.label} className="flex items-center gap-3 bg-canvas-2/70 border border-hairline rounded-xl px-4 py-3">
-                    <s.icon className="w-4 h-4 text-muted-foreground shrink-0" />
+                    <s.icon className="w-4 h-4 text-muted-foreground shrink-0" aria-hidden="true" />
                     <div>
                       <p className="font-mono-label text-[9px] uppercase text-muted-foreground">{s.label}</p>
                       <p className="text-sm font-medium">{s.value}</p>
@@ -118,8 +137,8 @@ const Index = () => {
               </div>
 
               {/* CTA */}
-              <a href={`tel:${PHONE}`} className="btn-primary text-xs justify-center">
-                See Full Catalogue <ArrowUpRight className="w-3.5 h-3.5" />
+              <a href={`tel:${PHONE}`} className="btn-primary text-xs justify-center" aria-label="Call to see full product catalogue">
+                See Full Catalogue <ArrowUpRight className="w-3.5 h-3.5" aria-hidden="true" />
               </a>
             </Reveal>
 
@@ -142,9 +161,10 @@ const Index = () => {
                 <div className="relative w-[85%] mx-auto -mt-10">
                   <img
                     src={productCamHero}
-                    alt="Aura Cam Pro"
+                    alt="Aura Cam Pro home security camera"
                     className="w-full h-auto"
                     style={{ filter: "drop-shadow(0 40px 80px rgba(0,0,0,0.20))" }}
+                    loading="eager"
                   />
                   {/* Floating pill badges over the image — Desktop Only */}
                   <div className="hidden lg:flex absolute bottom-16 left-0 flex flex-col gap-2">
@@ -175,8 +195,8 @@ const Index = () => {
                   </div>
                   <div className="hidden sm:block lg:hidden w-px h-10 bg-background/20" />
                   <div className="hidden lg:block w-full h-px bg-background/20" />
-                  <a href={`tel:${PHONE}`} className="text-sm font-medium text-background/80 hover:text-background transition-colors flex items-center gap-1.5">
-                    Call {PHONE_DISPLAY} <ArrowUpRight className="w-4 h-4" />
+                  <a href={`tel:${PHONE}`} className="text-sm font-medium text-background/80 hover:text-background transition-colors flex items-center gap-1.5" aria-label={`Call Home Protect AI at ${PHONE_DISPLAY}`}>
+                    Call {PHONE_DISPLAY} <ArrowUpRight className="w-4 h-4" aria-hidden="true" />
                   </a>
                 </div>
               </Reveal>
@@ -190,7 +210,7 @@ const Index = () => {
                     { icon: Star,        label: "Rating",   value: "4.9 / 5.0" },
                   ].map((s) => (
                     <div key={s.label} className="flex items-center gap-3 bg-canvas-2 border border-hairline rounded-xl px-4 py-3">
-                      <s.icon className="w-4 h-4 text-accent shrink-0" />
+                      <s.icon className="w-4 h-4 text-accent shrink-0" aria-hidden="true" />
                       <div className="text-left">
                         <p className="font-mono-label text-[9px] uppercase text-muted-foreground">{s.label}</p>
                         <p className="text-sm font-medium">{s.value}</p>
@@ -211,9 +231,9 @@ const Index = () => {
                     { name: "Cam Pro", active: true,  img: productCamera },
                     { name: "Doorbell", active: false, img: productDoorbell },
                   ].map((v) => (
-                    <div key={v.name} className={`flex items-center gap-3 rounded-xl border px-3 py-2 cursor-pointer transition-colors ${v.active ? "border-foreground bg-foreground/5" : "border-hairline hover:border-foreground/30"}`}>
+                    <div key={v.name} className={`flex items-center gap-3 rounded-xl border px-3 py-2 cursor-pointer transition-colors ${v.active ? "border-foreground bg-foreground/5" : "border-hairline hover:border-foreground/30"}`} aria-label={`View ${v.name}`}>
                       <div className="w-9 h-9 rounded-lg overflow-hidden bg-canvas-2 shrink-0">
-                        <img src={v.img} alt={v.name} className="w-full h-full object-cover" />
+                        <img src={v.img} alt={v.name} className="w-full h-full object-cover" loading="lazy" />
                       </div>
                       <p className={`text-xs font-medium ${v.active ? "text-foreground" : "text-muted-foreground"}`}>{v.name}</p>
                     </div>
@@ -228,7 +248,7 @@ const Index = () => {
                   Intelligent cameras, professional monitoring, and elegant smart devices — engineered to protect what matters.
                 </p>
                 <div className="mt-4 flex flex-wrap gap-2">
-                  <a href={`tel:${PHONE}`} className="btn-ghost text-xs px-4 py-2">Get a quote</a>
+                  <a href={`tel:${PHONE}`} className="btn-ghost text-xs px-4 py-2" aria-label="Get a security quote">Get a quote</a>
                 </div>
               </div>
             </Reveal>
@@ -238,8 +258,8 @@ const Index = () => {
           <div className="lg:hidden mt-16 flex flex-col items-center gap-4 text-center">
             <p className="text-muted-foreground text-sm max-w-sm">Intelligent cameras, professional monitoring, and elegant smart devices — engineered to protect what matters.</p>
             <div className="flex flex-wrap gap-3 justify-center">
-              <a href={`tel:${PHONE}`} className="btn-primary">Get a free quote <ArrowUpRight className="w-4 h-4" /></a>
-              <a href={`tel:${PHONE}`} className="btn-ghost">Call {PHONE_DISPLAY}</a>
+              <a href={`tel:${PHONE}`} className="btn-primary" aria-label="Call for a free security quote">Get a free quote <ArrowUpRight className="w-4 h-4" aria-hidden="true" /></a>
+              <a href={`tel:${PHONE}`} className="btn-ghost" aria-label={`Call us at ${PHONE_DISPLAY}`}>Call {PHONE_DISPLAY}</a>
             </div>
           </div>
 
@@ -247,7 +267,7 @@ const Index = () => {
       </section>
 
       {/* TRUST MARQUEE ===================== */}
-      <section className="border-y border-hairline bg-canvas-2/40 py-8 overflow-hidden">
+      <section className="border-y border-hairline bg-canvas-2/40 py-8 overflow-hidden" aria-label="Certifications Marquee">
         <div className="flex items-center gap-16 animate-marquee whitespace-nowrap">
           {[...Array(2)].map((_, i) => (
             <div key={i} className="flex items-center gap-16 shrink-0">
@@ -260,7 +280,7 @@ const Index = () => {
       </section>
 
       {/* INTRO STATEMENT ====================== */}
-      <section className="py-16 md:py-32 lg:py-40">
+      <section className="py-16 md:py-32 lg:py-40" aria-label="Manifesto">
         <div className="container-wide grid lg:grid-cols-12 gap-10">
           <div className="lg:col-span-3">
             <Reveal><span className="eyebrow">— 01 / Manifesto</span></Reveal>
@@ -276,7 +296,7 @@ const Index = () => {
       </section>
 
       {/* SOLUTIONS — bento asymmetric grid ====================== */}
-      <section className="py-24 border-y border-hairline overflow-hidden">
+      <section className="py-24 border-y border-hairline overflow-hidden" aria-label="Security Solutions">
         <div className="container-wide">
           <div className="flex items-end justify-between mb-16 flex-wrap gap-6">
             <div>
@@ -288,7 +308,7 @@ const Index = () => {
               </Reveal>
             </div>
             <Reveal delay={200}>
-              <a href={`tel:${PHONE}`} className="btn-ghost">Call to learn more <ArrowUpRight className="w-4 h-4" /></a>
+              <a href={`tel:${PHONE}`} className="btn-ghost" aria-label="Call to learn more about our solutions">Call to learn more <ArrowUpRight className="w-4 h-4" aria-hidden="true" /></a>
             </Reveal>
           </div>
 
@@ -297,10 +317,10 @@ const Index = () => {
 
             {/* Cell 1 — large hero card, spans 5 cols × 2 rows */}
             <Reveal delay={0} className="sm:col-span-2 md:col-span-5 md:row-span-2">
-              <a href={`tel:${PHONE}`} className="group flex flex-col justify-between h-full min-h-[360px] md:min-h-[480px] bg-foreground text-background rounded-3xl p-10 hover:ring-2 hover:ring-accent transition-all">
+              <a href={`tel:${PHONE}`} className="group flex flex-col justify-between h-full min-h-[360px] md:min-h-[480px] bg-foreground text-background rounded-3xl p-10 hover:ring-2 hover:ring-accent transition-all" aria-label="Learn about Home Security solutions">
                 <div>
                   <div className="w-14 h-14 rounded-2xl bg-background/10 flex items-center justify-center mb-8">
-                    <ShieldCheck className="w-6 h-6 text-accent-glow" />
+                    <ShieldCheck className="w-6 h-6 text-accent-glow" aria-hidden="true" />
                   </div>
                   <span className="font-mono-label text-[10px] uppercase tracking-widest text-background/40">01</span>
                   <h3 className="font-serif-display text-5xl md:text-6xl mt-3 leading-[0.92]">Home<br/>Security</h3>
@@ -308,7 +328,7 @@ const Index = () => {
                 <div>
                   <p className="text-background/70 text-sm leading-relaxed mb-8 max-w-xs">End-to-end protection for single-family homes, with sensors at every entry and intelligent automation.</p>
                   <div className="flex items-center gap-2 text-sm font-medium text-background/60 group-hover:text-background transition-colors">
-                    Learn more <ArrowUpRight className="w-4 h-4" />
+                    Learn more <ArrowUpRight className="w-4 h-4" aria-hidden="true" />
                   </div>
                 </div>
               </a>
@@ -316,10 +336,10 @@ const Index = () => {
 
             {/* Cell 2 — top-right medium */}
             <Reveal delay={80} className="sm:col-span-1 md:col-span-4">
-              <a href={`tel:${PHONE}`} className="group flex flex-col justify-between h-full min-h-[220px] bg-canvas-2 border border-hairline rounded-3xl p-8 hover:bg-canvas-2/80 hover:ring-2 hover:ring-accent transition-all">
+              <a href={`tel:${PHONE}`} className="group flex flex-col justify-between h-full min-h-[220px] bg-canvas-2 border border-hairline rounded-3xl p-8 hover:bg-canvas-2/80 hover:ring-2 hover:ring-accent transition-all" aria-label="Learn about Smart Cameras">
                 <div className="flex items-start justify-between">
                   <div className="w-11 h-11 rounded-xl bg-foreground text-background flex items-center justify-center">
-                    <Camera className="w-5 h-5" />
+                    <Camera className="w-5 h-5" aria-hidden="true" />
                   </div>
                   <span className="font-mono-label text-[10px] uppercase tracking-widest text-muted-foreground">02</span>
                 </div>
@@ -332,9 +352,9 @@ const Index = () => {
 
             {/* Cell 3 — top-right accent */}
             <Reveal delay={120} className="sm:col-span-1 md:col-span-3">
-              <a href={`tel:${PHONE}`} className="group flex flex-col justify-between h-full min-h-[220px] bg-accent/10 border border-accent/20 rounded-3xl p-8 hover:bg-accent/20 hover:ring-2 hover:ring-accent transition-all">
+              <a href={`tel:${PHONE}`} className="group flex flex-col justify-between h-full min-h-[220px] bg-accent/10 border border-accent/20 rounded-3xl p-8 hover:bg-accent/20 hover:ring-2 hover:ring-accent transition-all" aria-label="Learn about Video Doorbells">
                 <div className="w-11 h-11 rounded-xl bg-accent/20 flex items-center justify-center">
-                  <BellRing className="w-5 h-5 text-accent" />
+                  <BellRing className="w-5 h-5 text-accent" aria-hidden="true" />
                 </div>
                 <div>
                   <span className="font-mono-label text-[10px] uppercase tracking-widest text-muted-foreground">03</span>
@@ -346,9 +366,9 @@ const Index = () => {
 
             {/* Cell 4 — bottom-right medium */}
             <Reveal delay={160} className="sm:col-span-1 md:col-span-3">
-              <a href={`tel:${PHONE}`} className="group flex flex-col justify-between h-full min-h-[220px] bg-canvas-2 border border-hairline rounded-3xl p-8 hover:ring-2 hover:ring-accent transition-all">
+              <a href={`tel:${PHONE}`} className="group flex flex-col justify-between h-full min-h-[220px] bg-canvas-2 border border-hairline rounded-3xl p-8 hover:ring-2 hover:ring-accent transition-all" aria-label="Learn about Smart Locks">
                 <div className="w-11 h-11 rounded-xl bg-foreground text-background flex items-center justify-center">
-                  <KeyRound className="w-5 h-5" />
+                  <KeyRound className="w-5 h-5" aria-hidden="true" />
                 </div>
                 <div>
                   <span className="font-mono-label text-[10px] uppercase tracking-widest text-muted-foreground">04</span>
@@ -360,10 +380,10 @@ const Index = () => {
 
             {/* Cell 5 — bottom-right dark */}
             <Reveal delay={200} className="sm:col-span-1 md:col-span-4">
-              <a href={`tel:${PHONE}`} className="group flex flex-col justify-between h-full min-h-[220px] bg-foreground text-background rounded-3xl p-8 hover:ring-2 hover:ring-accent transition-all">
+              <a href={`tel:${PHONE}`} className="group flex flex-col justify-between h-full min-h-[220px] bg-foreground text-background rounded-3xl p-8 hover:ring-2 hover:ring-accent transition-all" aria-label="Learn about Motion Sensors">
                 <div className="flex items-start justify-between">
                   <div className="w-11 h-11 rounded-xl bg-background/10 flex items-center justify-center">
-                    <Radar className="w-5 h-5 text-accent-glow" />
+                    <Radar className="w-5 h-5 text-accent-glow" aria-hidden="true" />
                   </div>
                   <span className="font-mono-label text-[10px] uppercase tracking-widest text-background/40">05</span>
                 </div>
@@ -376,10 +396,10 @@ const Index = () => {
 
             {/* Cell 6 — full-width banner */}
             <Reveal delay={240} className="sm:col-span-2 md:col-span-12">
-              <a href={`tel:${PHONE}`} className="group flex flex-col md:flex-row items-center justify-between gap-6 bg-foreground text-background rounded-3xl px-10 py-8 hover:ring-2 hover:ring-accent transition-all">
+              <a href={`tel:${PHONE}`} className="group flex flex-col md:flex-row items-center justify-between gap-6 bg-foreground text-background rounded-3xl px-10 py-8 hover:ring-2 hover:ring-accent transition-all" aria-label="Learn about 24/7 Monitoring">
                 <div className="flex items-center gap-6">
                   <div className="w-14 h-14 rounded-2xl bg-background/10 flex items-center justify-center shrink-0">
-                    <Activity className="w-6 h-6 text-accent-glow" />
+                    <Activity className="w-6 h-6 text-accent-glow" aria-hidden="true" />
                   </div>
                   <div>
                     <span className="font-mono-label text-[10px] uppercase tracking-widest text-background/40">06</span>
@@ -388,7 +408,7 @@ const Index = () => {
                 </div>
                 <p className="text-background/65 text-sm leading-relaxed max-w-sm">Our UL-listed central station dispatches help in under 30 seconds — verified by video first, every single time.</p>
                 <div className="shrink-0 flex items-center gap-2 text-sm font-medium text-background/60 group-hover:text-background group-hover:gap-3 transition-all">
-                  Call now <ArrowUpRight className="w-4 h-4" />
+                  Call now <ArrowUpRight className="w-4 h-4" aria-hidden="true" />
                 </div>
               </a>
             </Reveal>
@@ -398,7 +418,7 @@ const Index = () => {
       </section>
 
       {/* PRODUCT SHOWCASE — no prices ==================== */}
-      <section className="py-32 overflow-hidden">
+      <section className="py-32 overflow-hidden" aria-label="Hardware Showcase">
         <div className="container-wide">
           <div className="grid lg:grid-cols-12 gap-10 mb-20">
             <div className="lg:col-span-5">
@@ -424,16 +444,16 @@ const Index = () => {
               { img: productSensor, name: "Pulse Sensor", tag: "Pet-Immune" },
             ].map((p, i) => (
               <Reveal key={p.name} delay={i * 80}>
-                <a href={`tel:${PHONE}`} className="group block">
+                <a href={`tel:${PHONE}`} className="group block" aria-label={`View details for ${p.name}`}>
                   <div className="aspect-[4/5] rounded-3xl overflow-hidden bg-canvas-2 mb-5 relative">
-                    <img src={p.img} alt={p.name} loading="lazy" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                    <img src={p.img} alt={`${p.name} security device`} loading="lazy" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
                     <div className="absolute top-4 left-4">
                       <span className="font-mono-label text-[10px] uppercase tracking-wider bg-background/90 backdrop-blur px-3 py-1.5 rounded-full">{p.tag}</span>
                     </div>
                   </div>
                   <div className="flex items-baseline justify-between">
                     <h3 className="font-serif-display text-2xl">{p.name}</h3>
-                    <ArrowUpRight className="w-4 h-4 text-muted-foreground group-hover:text-foreground transition-colors" />
+                    <ArrowUpRight className="w-4 h-4 text-muted-foreground group-hover:text-foreground transition-colors" aria-hidden="true" />
                   </div>
                 </a>
               </Reveal>
@@ -442,14 +462,14 @@ const Index = () => {
 
           <Reveal delay={400}>
             <div className="mt-12 flex justify-center">
-              <a href={`tel:${PHONE}`} className="btn-ghost">Browse all products <ArrowUpRight className="w-4 h-4" /></a>
+              <a href={`tel:${PHONE}`} className="btn-ghost" aria-label="Browse all security products">Browse all products <ArrowUpRight className="w-4 h-4" aria-hidden="true" /></a>
             </div>
           </Reveal>
         </div>
       </section>
 
       {/* WHY US — split feature ====================== */}
-      <section className="py-16 md:py-32 bg-foreground text-background relative overflow-hidden">
+      <section className="py-16 md:py-32 bg-foreground text-background relative overflow-hidden" aria-label="Why Choose Us">
         <div className="absolute inset-0 bg-gradient-aurora opacity-40" />
         <div className="container-wide relative">
           <div className="grid lg:grid-cols-12 gap-12 items-center">
@@ -488,7 +508,7 @@ const Index = () => {
             <div className="lg:col-span-6 lg:pl-12">
               <Reveal delay={150}>
                 <div className="relative">
-                  <img src={monitoringCenter} alt="24/7 Home Protect AI monitoring center" loading="lazy" className="rounded-3xl w-full" />
+                  <img src={monitoringCenter} alt="24/7 Home Protect AI professional monitoring center" loading="lazy" className="rounded-3xl w-full" />
                   <div className="absolute -bottom-6 -left-6 bg-background text-foreground p-6 rounded-2xl shadow-lift max-w-xs">
                     <p className="font-mono-label text-[10px] uppercase text-muted-foreground mb-2">Home Protect AI Central</p>
                     <p className="font-serif-display text-2xl leading-tight">Always on. Always human. Always here.</p>
@@ -501,12 +521,12 @@ const Index = () => {
       </section>
 
       {/* MONITORING DETAIL ============ */}
-      <section className="py-32">
+      <section className="py-32" aria-label="Professional Monitoring Detail">
         <div className="container-wide">
           <div className="grid lg:grid-cols-12 gap-10 items-center">
             <Reveal className="lg:col-span-5">
               <div className="aspect-[4/5] rounded-3xl overflow-hidden">
-                <img src={operatorCloseup} alt="Home Protect AI monitoring operator" loading="lazy" className="w-full h-full object-cover" />
+                <img src={operatorCloseup} alt="Home Protect AI monitoring operator verified alert" loading="lazy" className="w-full h-full object-cover" />
               </div>
             </Reveal>
             <div className="lg:col-span-7 lg:pl-8">
@@ -539,7 +559,7 @@ const Index = () => {
       </section>
 
       {/* APP / MONITORING BANNER ============== */}
-      <section className="py-24 bg-canvas-2/50">
+      <section className="py-24 bg-canvas-2/50" aria-label="Mobile App Features">
         <div className="container-wide">
           <div className="grid lg:grid-cols-12 gap-8 items-center">
             <div className="lg:col-span-7">
@@ -559,7 +579,7 @@ const Index = () => {
                     { icon: ShieldCheck, t: "One-tap arm", d: "From your wrist or phone" },
                   ].map((f) => (
                     <div key={f.t} className="flex gap-4 p-5 rounded-2xl bg-background border border-border/60">
-                      <f.icon className="w-5 h-5 mt-0.5 text-accent" />
+                      <f.icon className="w-5 h-5 mt-0.5 text-accent" aria-hidden="true" />
                       <div>
                         <p className="font-medium text-sm">{f.t}</p>
                         <p className="text-xs text-muted-foreground mt-1">{f.d}</p>
@@ -571,7 +591,7 @@ const Index = () => {
             </div>
             <div className="lg:col-span-5">
               <Reveal delay={150}>
-                <img src={appDashboard} alt="Home Protect AI app" loading="lazy" className="rounded-3xl w-full" />
+                <img src={appDashboard} alt="Home Protect AI mobile app dashboard" loading="lazy" className="rounded-3xl w-full" />
               </Reveal>
             </div>
           </div>
@@ -579,7 +599,7 @@ const Index = () => {
       </section>
 
       {/* SMART HOME LIFESTYLE ============== */}
-      <section className="py-32">
+      <section className="py-32" aria-label="Smart Home Integration">
         <div className="container-wide grid lg:grid-cols-12 gap-12 items-center">
           <Reveal className="lg:col-span-6">
             <span className="eyebrow">— 08 / Smart Home</span>
@@ -595,21 +615,21 @@ const Index = () => {
                 "Energy savings up to 23% per year",
               ].map((p) => (
                 <li key={p} className="flex gap-3 text-sm">
-                  <span className="w-1.5 h-1.5 rounded-full bg-accent mt-2 shrink-0" />{p}
+                  <span className="w-1.5 h-1.5 rounded-full bg-accent mt-2 shrink-0" aria-hidden="true" />{p}
                 </li>
               ))}
             </ul>
           </Reveal>
           <Reveal delay={150} className="lg:col-span-6">
             <div className="aspect-[4/3] rounded-3xl overflow-hidden">
-              <img src={livingRoomSmart} alt="Smart living room" loading="lazy" className="w-full h-full object-cover" />
+              <img src={livingRoomSmart} alt="Integrated smart home living room" loading="lazy" className="w-full h-full object-cover" />
             </div>
           </Reveal>
         </div>
       </section>
 
       {/* PRICING ====================== */}
-      <section className="py-28 bg-foreground text-background relative overflow-hidden">
+      <section className="py-28 bg-foreground text-background relative overflow-hidden" aria-label="Subscription Plans">
         <div className="absolute inset-0 bg-gradient-aurora opacity-25" />
         <div className="container-wide relative">
           <div className="grid lg:grid-cols-12 gap-10 mb-20">
@@ -692,12 +712,12 @@ const Index = () => {
                   <ul className="space-y-3 flex-1 mb-10">
                     {plan.feats.map((f) => (
                       <li key={f} className="flex items-start gap-3 text-sm">
-                        <span className={`w-1.5 h-1.5 rounded-full mt-1.5 shrink-0 ${plan.featured ? "bg-accent" : "bg-accent-glow"}`} />
+                        <span className={`w-1.5 h-1.5 rounded-full mt-1.5 shrink-0 ${plan.featured ? "bg-accent" : "bg-accent-glow"}`} aria-hidden="true" />
                         <span className={plan.featured ? "text-foreground/85" : "text-background/75"}>{f}</span>
                       </li>
                     ))}
                   </ul>
-                  <a href={`tel:${PHONE}`} className={`w-full text-center rounded-full py-4 text-sm font-medium transition-all ${plan.featured ? "bg-foreground text-background hover:bg-foreground/90" : "border border-background/25 text-background hover:bg-background/10"}`}>
+                  <a href={`tel:${PHONE}`} className={`w-full text-center rounded-full py-4 text-sm font-medium transition-all ${plan.featured ? "bg-foreground text-background hover:bg-foreground/90" : "border border-background/25 text-background hover:bg-background/10"}`} aria-label={`Choose ${plan.name} plan and call us`}>
                     Call to get started
                   </a>
                 </div>
@@ -712,7 +732,7 @@ const Index = () => {
       </section>
 
       {/* TESTIMONIALS ====================== */}
-      <section className="py-16 md:py-32 bg-canvas-2/40 border-y border-hairline">
+      <section className="py-16 md:py-32 bg-canvas-2/40 border-y border-hairline" aria-label="Customer Testimonials">
         <div className="container-wide">
           <Reveal><span className="eyebrow">— 09 / Customers</span></Reveal>
           <Reveal delay={100}>
@@ -723,13 +743,13 @@ const Index = () => {
             <Reveal delay={100} className="lg:col-span-7">
               <div className="bg-card border border-border/60 rounded-3xl p-10 h-full">
                 <div className="flex gap-1 mb-6">
-                  {[...Array(5)].map((_, i) => <Star key={i} className="w-4 h-4 fill-foreground text-foreground" />)}
+                  {[...Array(5)].map((_, i) => <Star key={i} className="w-4 h-4 fill-foreground text-foreground" aria-hidden="true" />)}
                 </div>
                 <p className="font-serif-display text-3xl md:text-4xl leading-[1.2]">
                   "The install team was in and out in three hours. The app is the cleanest piece of software I've used in years. And the night someone tried our back door, the response was instant."
                 </p>
                 <div className="mt-10 flex items-center gap-4">
-                  <div className="w-12 h-12 rounded-full bg-secondary flex items-center justify-center font-serif-display text-xl">M</div>
+                  <div className="w-12 h-12 rounded-full bg-secondary flex items-center justify-center font-serif-display text-xl" aria-hidden="true">M</div>
                   <div>
                     <p className="font-medium text-sm">Maya Reinholt</p>
                     <p className="text-xs text-muted-foreground">Family customer · Brooklyn, NY</p>
@@ -755,9 +775,9 @@ const Index = () => {
       </section>
 
       {/* COVERAGE / NEIGHBORHOOD ============== */}
-      <section className="relative py-16 md:py-32 overflow-hidden">
+      <section className="relative py-16 md:py-32 overflow-hidden" aria-label="Service Coverage">
         <div className="absolute inset-0">
-          <img src={neighborhoodAerial} alt="Home Protect AI-protected neighborhood" loading="lazy" className="w-full h-full object-cover" />
+          <img src={neighborhoodAerial} alt="Aerial view of a safe neighborhood protected by Home Protect AI" loading="lazy" className="w-full h-full object-cover" />
           <div className="absolute inset-0 bg-foreground/70" />
         </div>
         <div className="container-wide relative text-background">
@@ -772,9 +792,9 @@ const Index = () => {
               </Reveal>
               <Reveal delay={300}>
                 <div className="mt-10 flex flex-wrap gap-3">
-                  <a href={`tel:${PHONE}`} className="btn-accent">Check your area <MapPin className="w-4 h-4" /></a>
-                  <a href={`tel:${PHONE}`} className="inline-flex items-center gap-2 rounded-full border border-background/30 text-background px-6 py-3.5 text-sm font-medium hover:border-background/60">
-                    <PhoneCall className="w-4 h-4" /> {PHONE_DISPLAY}
+                  <a href={`tel:${PHONE}`} className="btn-accent" aria-label="Check security coverage in your area">Check your area <MapPin className="w-4 h-4" aria-hidden="true" /></a>
+                  <a href={`tel:${PHONE}`} className="inline-flex items-center gap-2 rounded-full border border-background/30 text-background px-6 py-3.5 text-sm font-medium hover:border-background/60" aria-label={`Call us at ${PHONE_DISPLAY}`}>
+                    <PhoneCall className="w-4 h-4" aria-hidden="true" /> {PHONE_DISPLAY}
                   </a>
                 </div>
               </Reveal>
@@ -799,7 +819,7 @@ const Index = () => {
       </section>
 
       {/* PROCESS TIMELINE ===================== */}
-      <section className="py-16 md:py-32">
+      <section className="py-16 md:py-32" aria-label="Installation Process">
         <div className="container-wide">
           <div className="grid lg:grid-cols-12 gap-12">
             <div className="lg:col-span-4">
@@ -808,7 +828,7 @@ const Index = () => {
                 <h2 className="font-serif-display text-5xl md:text-6xl mt-4 leading-[0.95]">From quote to <em>protected</em> in 48 hours.</h2>
               </Reveal>
               <Reveal delay={200}>
-                <img src={installerImg} alt="Home Protect AI installation" loading="lazy" className="mt-10 rounded-3xl w-full" />
+                <img src={installerImg} alt="Home Protect AI professional technician installing security system" loading="lazy" className="mt-10 rounded-3xl w-full" />
               </Reveal>
             </div>
             <div className="lg:col-span-8 lg:pl-12">
@@ -838,10 +858,10 @@ const Index = () => {
       </section>
 
       {/* ALWAYS WATCHING — sticky image layout ===== */}
-      <section className="lg:grid lg:grid-cols-2 overflow-hidden">
+      <section className="lg:grid lg:grid-cols-2 overflow-hidden" aria-label="Night Vision and AI Security">
         <div className="lg:sticky lg:top-0 lg:h-screen overflow-hidden relative order-2 min-h-[50vh]">
-          <img src={homeExteriorDusk} alt="Home protected at dusk" loading="lazy" className="absolute inset-0 w-full h-full object-cover" />
-          <div className="absolute inset-0 bg-foreground/30" />
+          <img src={homeExteriorDusk} alt="Home exterior at dusk with active AI security monitoring" loading="lazy" className="absolute inset-0 w-full h-full object-cover" />
+          <div className="absolute inset-0 bg-foreground/30" aria-hidden="true" />
         </div>
         <div className="bg-foreground text-background py-16 px-6 lg:py-32 lg:px-16 flex items-center order-1 min-h-[70vh]">
           <div className="max-w-lg">
@@ -855,8 +875,8 @@ const Index = () => {
               <p className="mt-6 text-lg text-background/80 leading-relaxed">Color night vision, infrared backup, and AI threat detection guard your home through every dark hour.</p>
             </Reveal>
             <Reveal delay={300}>
-              <a href={`tel:${PHONE}`} className="mt-10 btn-accent inline-flex items-center gap-2">
-                Call {PHONE_DISPLAY} <PhoneCall className="w-4 h-4" />
+              <a href={`tel:${PHONE}`} className="mt-10 btn-accent inline-flex items-center gap-2" aria-label="Call for 24/7 security protection">
+                Call {PHONE_DISPLAY} <PhoneCall className="w-4 h-4" aria-hidden="true" />
               </a>
             </Reveal>
           </div>
@@ -864,7 +884,7 @@ const Index = () => {
       </section>
 
       {/* FAQ PREVIEW ===================== */}
-      <section className="py-16 md:py-32 bg-canvas-2/40 border-t border-hairline">
+      <section className="py-16 md:py-32 bg-canvas-2/40 border-t border-hairline" aria-label="Frequently Asked Questions">
         <div className="container-wide grid lg:grid-cols-12 gap-12">
           <div className="lg:col-span-4">
             <Reveal><span className="eyebrow">— 13 / Common questions</span></Reveal>
@@ -872,7 +892,7 @@ const Index = () => {
               <h2 className="font-serif-display text-5xl md:text-6xl mt-4 leading-[0.95]">Things we get <em>asked</em> a lot.</h2>
             </Reveal>
             <Reveal delay={200}>
-              <a href={`tel:${PHONE}`} className="btn-ghost mt-8 inline-flex items-center gap-2">All questions <ArrowUpRight className="w-4 h-4" /></a>
+              <a href={`tel:${PHONE}`} className="btn-ghost mt-8 inline-flex items-center gap-2" aria-label="View all frequently asked questions">All questions <ArrowUpRight className="w-4 h-4" aria-hidden="true" /></a>
             </Reveal>
           </div>
           <div className="lg:col-span-8 space-y-1">
@@ -884,9 +904,9 @@ const Index = () => {
             ].map((f, i) => (
               <Reveal key={f.q} delay={i * 80}>
                 <details className="group border-b border-hairline py-6">
-                  <summary className="flex justify-between items-center cursor-pointer list-none">
+                  <summary className="flex justify-between items-center cursor-pointer list-none" aria-label={`Expand question: ${f.q}`}>
                     <span className="font-serif-display text-2xl pr-4">{f.q}</span>
-                    <Wrench className="w-4 h-4 text-muted-foreground transition-transform group-open:rotate-45 shrink-0" />
+                    <Wrench className="w-4 h-4 text-muted-foreground transition-transform group-open:rotate-45 shrink-0" aria-hidden="true" />
                   </summary>
                   <p className="mt-4 text-muted-foreground leading-relaxed max-w-2xl">{f.a}</p>
                 </details>
@@ -897,10 +917,10 @@ const Index = () => {
       </section>
 
       {/* LIFESTYLE CTA — sticky image layout */}
-      <section className="lg:grid lg:grid-cols-2 overflow-hidden">
+      <section className="lg:grid lg:grid-cols-2 overflow-hidden" aria-label="Join Home Protect AI">
         <div className="lg:sticky lg:top-0 lg:h-screen overflow-hidden relative order-1 min-h-[50vh]">
-          <img src={lifestyleFamily} alt="Family at home" loading="lazy" className="absolute inset-0 w-full h-full object-cover" />
-          <div className="absolute inset-0 bg-foreground/40" />
+          <img src={lifestyleFamily} alt="A happy family feeling safe at home" loading="lazy" className="absolute inset-0 w-full h-full object-cover" />
+          <div className="absolute inset-0 bg-foreground/40" aria-hidden="true" />
         </div>
         <div className="bg-foreground text-background py-16 px-6 lg:py-32 lg:px-16 flex items-center order-2 min-h-[80vh]">
           <div className="max-w-xl">
@@ -910,8 +930,8 @@ const Index = () => {
               </h2>
             </Reveal>
             <Reveal delay={200}>
-              <a href={`tel:${PHONE}`} className="mt-10 inline-flex items-center gap-3 bg-background text-foreground px-7 py-4 rounded-full text-sm font-medium hover:gap-4 transition-all">
-                Protect your home <ArrowUpRight className="w-4 h-4" />
+              <a href={`tel:${PHONE}`} className="mt-10 inline-flex items-center gap-3 bg-background text-foreground px-7 py-4 rounded-full text-sm font-medium hover:gap-4 transition-all" aria-label="Protect your home today">
+                Protect your home <ArrowUpRight className="w-4 h-4" aria-hidden="true" />
               </a>
             </Reveal>
           </div>
@@ -919,11 +939,8 @@ const Index = () => {
       </section>
 
       <CTAFooter />
-    </>
+    </main>
   );
 };
 
 export default Index;
-
-
-

@@ -1,8 +1,9 @@
-﻿import { useState } from "react";
+import { useState } from "react";
 import { PageHero } from "@/components/sections/PageHero";
 import { CTAFooter } from "@/components/sections/CTAFooter";
 import { Reveal } from "@/components/site/Reveal";
 import { Plus } from "lucide-react";
+import { SEO } from "@/components/site/SEO";
 
 const groups = [
   { cat: "Pricing", items: [
@@ -36,9 +37,14 @@ const Item = ({ q, a }: { q: string; a: string }) => {
   const [open, setOpen] = useState(false);
   return (
     <div className="border-b border-hairline">
-      <button onClick={() => setOpen(!open)} className="flex justify-between items-start w-full py-7 text-left gap-6">
+      <button 
+        onClick={() => setOpen(!open)} 
+        className="flex justify-between items-start w-full py-7 text-left gap-6"
+        aria-expanded={open}
+        aria-label={`Expand question: ${q}`}
+      >
         <span className="font-serif-display text-2xl md:text-3xl leading-tight">{q}</span>
-        <Plus className={`w-5 h-5 mt-2 shrink-0 transition-transform duration-500 ${open ? "rotate-45" : ""}`} />
+        <Plus className={`w-5 h-5 mt-2 shrink-0 transition-transform duration-500 ${open ? "rotate-45" : ""}`} aria-hidden="true" />
       </button>
       <div className={`grid transition-all duration-500 ease-out ${open ? "grid-rows-[1fr] opacity-100 pb-8" : "grid-rows-[0fr] opacity-0"}`}>
         <div className="overflow-hidden">
@@ -50,14 +56,18 @@ const Item = ({ q, a }: { q: string; a: string }) => {
 };
 
 const FAQ = () => (
-  <>
+  <main>
+    <SEO 
+        title="Frequently Asked Questions | Home Protect AI"
+        description="Find answers to common questions about Home Protect AI pricing, installation, monitoring, and smart home integration."
+    />
     <PageHero eyebrow="— Index 08" index="faq" title={<>Answers, before you <em>ask.</em></>} description="Real questions from real customers. If yours isn't here, reach out — we answer every email within an hour." />
 
-    <section className="py-12 pb-32">
+    <section className="py-12 pb-32" aria-label="FAQ Sections">
       <div className="container-wide">
         {groups.map((g, gi) => (
           <Reveal key={g.cat}>
-            <div className="grid lg:grid-cols-12 gap-10 mb-20">
+            <div className="grid lg:grid-cols-12 gap-10 mb-20" aria-label={g.cat}>
               <div className="lg:col-span-3">
                 <span className="font-mono-label text-[11px] uppercase text-muted-foreground sticky top-28">— {String(gi + 1).padStart(2, "0")} / {g.cat}</span>
               </div>
@@ -71,8 +81,7 @@ const FAQ = () => (
     </section>
 
     <CTAFooter />
-  </>
+  </main>
 );
 
 export default FAQ;
-

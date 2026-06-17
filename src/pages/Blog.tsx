@@ -1,6 +1,7 @@
 ﻿import { PageHero } from "@/components/sections/PageHero";
 import { CTAFooter } from "@/components/sections/CTAFooter";
 import { Reveal } from "@/components/site/Reveal";
+import { SEO } from "@/components/site/SEO";
 import { Link } from "react-router-dom";
 import { ArrowUpRight } from "lucide-react";
 import blog1 from "@/assets/blog-1.jpg";
@@ -20,14 +21,18 @@ export const articles = [
 ];
 
 const Blog = () => (
-  <>
+  <main>
+    <SEO 
+      title="Blog | Home Protect AI"
+      description="Read our latest insights, design tips, and guides on home security, smart home automation, and safety."
+    />
     <PageHero eyebrow="— Index 07" index="the journal" title={<>Notes from a <em>safer</em> home.</>} description="Field-tested guides, design philosophy, and customer stories from the Home Protect AI team." />
 
     {/* Featured */}
-    <section className="py-12">
+    <section className="py-12" aria-label="Featured Article">
       <div className="container-wide">
         <Reveal>
-          <Link to={`/blog/${articles[0].slug}`} className="group grid lg:grid-cols-12 gap-10 items-center">
+          <Link to={`/blog/${articles[0].slug}`} className="group grid lg:grid-cols-12 gap-10 items-center" aria-label={`Read featured article: ${articles[0].title}`}>
             <div className="lg:col-span-7 aspect-[4/3] lg:aspect-[16/11] rounded-3xl overflow-hidden bg-canvas-2 lift">
               <img src={articles[0].img} alt={articles[0].title} loading="lazy" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
             </div>
@@ -38,7 +43,7 @@ const Blog = () => (
               <div className="mt-8 flex items-center gap-4 text-xs text-muted-foreground font-mono-label">
                 <span>{articles[0].date}</span><span>·</span><span>{articles[0].read} read</span>
               </div>
-              <div className="mt-8 inline-flex items-center gap-2 text-sm font-medium group-hover:gap-3 transition-all">Read article <ArrowUpRight className="w-4 h-4" /></div>
+              <div className="mt-8 inline-flex items-center gap-2 text-sm font-medium group-hover:gap-3 transition-all">Read article <ArrowUpRight className="w-4 h-4" aria-hidden="true" /></div>
             </div>
           </Link>
         </Reveal>
@@ -46,12 +51,12 @@ const Blog = () => (
     </section>
 
     {/* Grid */}
-    <section className="py-20">
+    <section className="py-20" aria-label="Blog Articles">
       <div className="container-wide">
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-16">
           {articles.slice(1).map((a, i) => (
             <Reveal key={a.slug} delay={(i % 3) * 80}>
-              <Link to={`/blog/${a.slug}`} className="group block">
+              <Link to={`/blog/${a.slug}`} className="group block" aria-label={`Read article: ${a.title}`}>
                 <div className="aspect-[4/3] rounded-2xl overflow-hidden bg-canvas-2 mb-5 lift">
                   <img src={a.img} alt={a.title} loading="lazy" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
                 </div>
