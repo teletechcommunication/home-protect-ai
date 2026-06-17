@@ -167,13 +167,14 @@ const Index = () => {
               </Reveal>
 
               {/* Bottom badge / Pricing — Responsive */}
-              <Reveal delay={450} className="w-full lg:w-auto">
-                <div className="relative lg:absolute lg:-bottom-14 lg:left-1/2 lg:-translate-x-1/2 mt-8 lg:mt-0 bg-foreground text-background rounded-2xl px-6 py-4 flex flex-col sm:flex-row items-center gap-3 sm:gap-6 shadow-lift text-center sm:text-left mx-auto max-w-[280px] sm:max-w-none">
+              <Reveal delay={450} className="w-full lg:w-auto lg:absolute lg:right-[-60px] lg:top-1/2 lg:-translate-y-1/2 lg:z-30">
+                <div className="relative mt-8 lg:mt-0 bg-foreground text-background rounded-2xl px-6 py-4 flex flex-col sm:flex-row lg:flex-col items-center lg:items-start gap-3 sm:gap-6 lg:gap-4 shadow-lift text-center sm:text-left mx-auto max-w-[280px] sm:max-w-none lg:min-w-[180px]">
                   <div>
                     <p className="font-mono-label text-[10px] uppercase text-background/50 mb-1">Starting at</p>
                     <p className="font-serif-display text-3xl leading-none">$29<span className="text-sm font-sans font-normal text-background/60">/mo</span></p>
                   </div>
-                  <div className="hidden sm:block w-px h-10 bg-background/20" />
+                  <div className="hidden sm:block lg:hidden w-px h-10 bg-background/20" />
+                  <div className="hidden lg:block w-full h-px bg-background/20" />
                   <a href={`tel:${PHONE}`} className="text-sm font-medium text-background/80 hover:text-background transition-colors flex items-center gap-1.5">
                     Call {PHONE_DISPLAY} <ArrowUpRight className="w-4 h-4" />
                   </a>
